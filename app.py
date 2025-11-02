@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
 # Train the model if not found
-if not os.path.exists("model.pkl") or not os.path.exists("scaler.pkl"):
+if not os.path.exists("model.joblib") or not os.path.exists("scaler.joblib"):
     # Sample dataset
     data = pd.DataFrame({
         'time_spent': [30, 5, 12, 50, 3, 40, 8, 60],
@@ -32,12 +32,12 @@ if not os.path.exists("model.pkl") or not os.path.exists("scaler.pkl"):
     model = RandomForestClassifier(random_state=42)
     model.fit(X_train_scaled, y_train)
 
-    joblib.dump(model, 'model.pkl')
-    joblib.dump(scaler, 'scaler.pkl')
+    joblib.dump(model, 'model.joblib')
+    joblib.dump(scaler, 'scaler.joblib')
 
 # Load the trained model and scaler
-model = joblib.load('model.pkl')
-scaler = joblib.load('scaler.pkl')
+model = joblib.load('model.joblib')
+scaler = joblib.load('scaler.joblib')
 
 st.title("🛒 E-Commerce Purchase Predictor")
 
